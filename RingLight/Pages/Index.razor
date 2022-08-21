@@ -1,7 +1,17 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Ring Light</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Hello, world!</MudText>
-<MudText Class="mb-8">Welcome to your new app, powered by MudBlazor!</MudText>
-<MudAlert Severity="Severity.Normal">You can find documentation and examples on our website here: <MudLink Href="https://mudblazor.com" Typo="Typo.body2" Color="Color.Inherit"><b>www.mudblazor.com</b></MudLink></MudAlert>
+<div style="@OverlayStyle">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudStack Row Justify="Justify.Center" AlignItems="AlignItems.End" Style="height: 100vh">
+            <MudSlider @bind-Value="@value" Variant="Variant.Filled" Color="Color.Info" Min="0" Max="255" Class="mb-5"></MudSlider>
+        </MudStack>
+    </MudContainer>    
+</div>
+
+@code{
+    double value = 127.5;
+
+    string OverlayStyle => $"background:rgba({value}, {value}, {value}, 1)";
+}
